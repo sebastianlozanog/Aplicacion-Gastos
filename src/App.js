@@ -6,7 +6,7 @@ import ExpenseForm from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
 import Statistics from './components/Statistics';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://gestion-gastos-cmb7fuahareravab.canadaeast-01.azurewebsites.net/api';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
