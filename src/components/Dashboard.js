@@ -3,10 +3,10 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recha
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-function Dashboard({ statistics, expenses }) {
+function Dashboard({ statistics = { total: 0, monthly: 0, byCategory: [] }, expenses = [] }) {
   const recentExpenses = expenses.slice(0, 5);
   
-  const chartData = statistics.byCategory
+  const chartData = (statistics.byCategory || [])
     .filter(cat => cat.total > 0)
     .map(cat => ({
       name: cat.name,
@@ -128,7 +128,7 @@ function Dashboard({ statistics, expenses }) {
       <div className="category-breakdown">
         <h2>Detalle por Categoría</h2>
         <div className="category-grid">
-          {statistics.byCategory.map(cat => (
+          {(statistics.byCategory || []).map(cat => (
             <div key={cat.name} className="category-card" style={{ borderColor: cat.color }}>
               <div className="category-header">
                 <span className="category-icon">{cat.icon}</span>
