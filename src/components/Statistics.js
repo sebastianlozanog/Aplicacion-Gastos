@@ -16,10 +16,12 @@ function Statistics({ expenses }) {
     }).format(amount);
   };
 
-  useEffect(() => {
-    calculateMonthlyData();
-    calculateDailyData();
-  }, [expenses]);
+useEffect(() => {
+  calculateMonthlyData();
+  calculateDailyData();
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [expenses]);
 
   const calculateMonthlyData = () => {
     const last6Months = [];
