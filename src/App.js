@@ -61,16 +61,16 @@ function App() {
     }
   };
 
-  const updateExpense = async (id, updatedExpense) => {
+ const updateExpense = async (id, updatedData) => {
     try {
-      const response = await axios.put(`${API_URL}/expenses/${id}`, updatedExpense);
-      setExpenses(expenses.map(exp => exp.id === id ? response.data : exp));
-      fetchData(); // Refrescar estadísticas
-    } catch (error) {
-      console.error('Error al actualizar gasto:', error);
-      alert('Error al actualizar gasto');
+        const response = await axios.put(`${API_URL}/expenses/${id}`, updatedData);
+        setExpenses(expenses.map(exp => 
+            exp.id === id ? response.data : exp
+        ));
+    } catch (err) {
+        console.error('Error al actualizar gasto:', err);
     }
-  };
+};
 
   if (loading) {
     return (
